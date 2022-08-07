@@ -7,6 +7,10 @@ a, button {
   color: #DC2F02;
 }
 
+.text-hidden {
+  opacity: 50%;
+}
+
 .title-lg {
   font-size: 175%;
 }
