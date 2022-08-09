@@ -5,7 +5,10 @@
 </div>
 
 <div class="container mt-sm">
-  <h2 class="title-lg">Вопросы</h2>
+  <h2 class="title-lg">
+    <%= @questions.count %>
+    <%= inclination(@questions.count, %w[вопрос вопроса вопросов]) %>
+  </h2>
 </div>
 
 <% @questions.each do |question| %>
