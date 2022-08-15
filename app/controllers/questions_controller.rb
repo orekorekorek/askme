@@ -4,7 +4,14 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.create(question_params)
 
-    redirect_to @question, notice: "Новый вопрос создан!"
+    if @question.save
+      redirect_to root_path, notice: "Новый вопрос создан!"
+    else
+      flash.now[:alert] = "Некорректный вопрос!"
+
+      render :new
+    end
+
   end
 
   def update
