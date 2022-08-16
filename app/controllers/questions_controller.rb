@@ -17,13 +17,13 @@ class QuestionsController < ApplicationController
   def update
     @question.update(question_params)
 
-    redirect_to @question, notice: "Вопрос сохранен!"
+    redirect_to root_path, notice: "Вопрос сохранен!"
   end
 
   def destroy
     @question.destroy
 
-    redirect_to questions_path, notice: "Вопрос удален!"
+    redirect_to root_path, notice: "Вопрос удален!"
   end
 
   def show
@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
   def hide
     @question.update(hidden: true)
 
-    redirect_to @question, notice: "Вопрос скрыт!"
+    redirect_to root_path, notice: "Вопрос скрыт!"
   end
 
   private
