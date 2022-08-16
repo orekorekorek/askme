@@ -8,6 +8,14 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
+
+  <% if current_user.present? %>
+  <style>
+    .navbar {
+      background-color: <%= current_user.header_color %>;
+    }
+  </style>
+  <% end %>
 </head>
 
 <body>
