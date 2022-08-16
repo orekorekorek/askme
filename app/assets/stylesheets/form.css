@@ -1,9 +1,9 @@
-.form-text-area, .form-text-field {
+.form-text-area, .form-text-field, .form-color-field{
   border: 1px solid #D0D0D0;
   padding: 7.5px 10px;
 }
 
-.form-text-area:focus, .form-text-field:focus {
+.form-text-area:focus, .form-text-field:focus, .form-color-field:focus {
   background-color: #FEE9C3;
   outline-width: 0;
 }
