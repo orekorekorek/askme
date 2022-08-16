@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      session[:user_id] = @user.id
       redirect_to root_path, notice: "Данные пользователя обновлены"
     else
       flash.now[:alert] = "При попытке сохранить данные пользователя возникли ошибки"
