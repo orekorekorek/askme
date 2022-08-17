@@ -14,6 +14,10 @@ class User < ApplicationRecord
     format: { with: /\A\w+\z/, message: " can contain only Latin letters, numbers, and a sign _" },
     length: { maximum: 40 }
 
+  validates :header_color,
+    presence: true,
+    format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
+
   def downcase_nickname
     nickname.downcase!
   end
