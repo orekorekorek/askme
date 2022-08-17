@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email,
     db_presence: true,
     db_uniqueness: true,
-    format: { with: /\A[a-z\d_+.\-]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i }
+    format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validates :nickname,
     db_presence: true,
@@ -17,6 +17,6 @@ class User < ApplicationRecord
   private
 
   def downcase_nickname
-    nickname.downcase!
+    nickname&.downcase!
   end
 end
