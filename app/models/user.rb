@@ -14,6 +14,9 @@ class User < ApplicationRecord
     format: { with: /\A\w+\z/ },
     length: { maximum: 40 }
 
+  validates :name,
+    db_presence: true
+
   has_many :questions
 
   private
