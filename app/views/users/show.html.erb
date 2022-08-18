@@ -1,0 +1,21 @@
+<div class="user-box">
+  <h2 class="title-lg mt-lg"><%= @user.name %></h2>
+  <p class="text-bold mt mb-lg"><%= display_nickname(@user) %></p>
+</div>
+
+<div class="container">
+  <p><%= link_to "Создать новый вопрос", new_question_path, class: "button button-main" %></p>
+</div>
+
+<div class="container mt-sm">
+  <h2 class="title-lg">
+    <%= @questions.count %>
+    <%= inclination(@questions.count, %w[вопрос вопроса вопросов]) %>
+  </h2>
+</div>
+
+<% @questions.each do |question| %>
+  <div class="mt-sm container">
+    <%= render question %>
+  </div>
+<% end %>>
