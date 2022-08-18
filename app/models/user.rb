@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :name,
     db_presence: true
 
-  has_many :questions
+  has_many :questions, dependent: :delete_all
 
   private
 
