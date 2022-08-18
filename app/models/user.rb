@@ -14,6 +14,8 @@ class User < ApplicationRecord
     format: { with: /\A\w+\z/ },
     length: { maximum: 40 }
 
+  has_many :questions
+
   private
 
   def downcase_nickname
