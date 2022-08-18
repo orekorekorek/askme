@@ -12,7 +12,11 @@
     </div>
   <% end %>
 
-  <%= render 'questions/form', question: @question %>
+  <%= link_to "Спроси меня", new_question_path(user_id: @user.id), class: "button button-yellow" %>
+
+  <p class="mt">
+    <%= render 'questions/form', question: @question %>
+  </p>
 </div>
 
 <div class="container mt-sm">

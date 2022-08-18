@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-      redirect_to root_path, notice: "Новый вопрос создан!"
+      redirect_to user_path(@question.user), notice: "Новый вопрос создан!"
     else
       flash.now[:alert] = "Некорректный вопрос!"
 
@@ -15,7 +15,8 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
-      redirect_to root_path, notice: "Вопрос сохранен!"
+
+      redirect_to user_path(@question.user), notice: "Вопрос сохранен!"
     else
       flash.now[:alert] = "Некорректный вопрос!"
 
@@ -25,9 +26,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @user = @question.user
     @question.destroy
 
-    redirect_to root_path, notice: "Вопрос удален!"
+    redirect_to user_path(@user), notice: "Вопрос удален!"
   end
 
   def show
