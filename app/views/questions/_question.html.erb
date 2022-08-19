@@ -15,13 +15,15 @@
 
   <% if current_user == question.user && current_user.present? %>
     <div>
-      <%= link_to fa_icon("pencil"), edit_question_path(question), title: "Редактировать" %>
+      <% edit_icon = question.answer.present? ? "pencil" : "reply" %>
+      <%= link_to fa_icon(edit_icon), edit_question_path(question), title: "Редактировать", class: "mr-sm" %>
 
       <%= button_to fa_icon("trash-o"), question_path(question), method: :delete, title: "Удалить",
         form: { data: { turbo_confirm: "Вы уверены, что хотите удалить вопрос?" } } %>
 
       <% unless question.hidden? %>
-        <%= button_to fa_icon("eye-slash"), hide_question_path(question), method: :put, title: "Скрыть" %>
+        <%= button_to fa_icon("eye-slash"), hide_question_path(question), method: :put, title: "Скрыть",
+          class: "ml-sm" %>
       <% end %>
     </div>
   <% end %>
