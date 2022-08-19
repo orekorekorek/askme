@@ -13,7 +13,7 @@ class User < ApplicationRecord
     db_uniqueness: true,
     format: { with: /\A\w+\z/ },
     length: { maximum: 40 }
-  
+
   validates :name,
     db_presence: true
 
