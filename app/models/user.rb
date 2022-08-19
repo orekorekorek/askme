@@ -13,11 +13,15 @@ class User < ApplicationRecord
     db_uniqueness: true,
     format: { with: /\A\w+\z/ },
     length: { maximum: 40 }
-
+  
   validates :name,
     db_presence: true
 
   has_many :questions, dependent: :delete_all
+
+  validates :header_color,
+    presence: true,
+    format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
 
   private
 
