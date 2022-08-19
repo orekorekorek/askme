@@ -10,31 +10,35 @@
   <p class="text-bold mt mb-lg"><%= display_nickname(@user) %></p>
 </div>
 
-<div class="container">
-  <% if @question.errors.any? %>
-    <div class="mt">
-      <% @question.errors.full_messages.each do |message| %>
-        <p class="mb-sm text-red"><%= message %></p>
-      <% end %>
-    </div>
-  <% end %>
+<% if @questions.any? %>
+  <div class="container">
+    <% if @question.errors.any? %>
+      <div class="mt">
+        <% @question.errors.full_messages.each do |message| %>
+          <p class="mb-sm text-red"><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
 
-  <%= link_to "Спроси меня", new_question_path(user_id: @user.id), class: "button button-yellow" %>
+    <%= link_to "Спроси меня", new_question_path(user_id: @user.id), class: "button button-yellow" %>
 
-  <p class="mt">
-    <%= render 'questions/form', question: @question %>
-  </p>
-</div>
-
-<div class="container mt-sm">
-  <h2 class="title-lg">
-    <%= @questions.count %>
-    <%= inclination(@questions.count, %w[вопрос вопроса вопросов]) %>
-  </h2>
-</div>
-
-<% @questions.each do |question| %>
-  <div class="mt-sm container">
-    <%= render question %>
+    <p class="mt">
+      <%= render 'questions/form', question: @question %>
+    </p>
   </div>
-<% end %>>
+
+  <div class="container mt-sm">
+    <h2 class="title-lg">
+      <%= @questions.count %>
+      <%= inclination(@questions.count, %w[вопрос вопроса вопросов]) %>
+    </h2>
+  </div>
+
+  <% @questions.each do |question| %>
+    <div class="mt-sm container">
+      <%= render question %>
+    </div>
+  <% end %>>
+<% else %>
+  <%= render partial: 'no_questions', locals: { user: @user } %>
+<% end %>
