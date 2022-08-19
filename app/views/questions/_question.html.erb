@@ -1,3 +1,18 @@
+<div class="text-sm text-grey mb-sm">
+  <span>
+    для
+    <%= link_to display_nickname(question.user), user_path(question.user), method: :get %>
+  </span>
+
+  <% if question.author.present? %>
+    <span>
+      от
+      <%= link_to display_nickname(question.author), user_path(question.author), method: :get %>
+    </span>
+  <% end %>
+</div>
+
+
 <div class="mb-sm <%= "text-hidden" if question.hidden? %>">
   <%= simple_format h(question.body) %>
 </div>

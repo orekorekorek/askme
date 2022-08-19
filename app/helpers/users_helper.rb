@@ -1,5 +1,5 @@
 module UsersHelper
   def display_nickname(user)
-    "@#{user.nickname}"
+    "@#{user&.nickname}"
   end
 end
