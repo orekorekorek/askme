@@ -10,6 +10,7 @@
 
 <div class="container mt-sm">
   <h2 class="title-lg">
+    <%= inclination(@questions.count, %w[Последний Последние Последние]) %>
     <%= @questions.count %>
     <%= inclination(@questions.count, %w[вопрос вопроса вопросов]) %>
   </h2>
