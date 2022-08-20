@@ -1,5 +1,9 @@
 <div class="text-sm text-grey mb-sm">
   <span>
+    Вопрос <%= link_to "##{question.id}", question_path(question) %>
+  </span>
+
+  <span>
     для
     <%= link_to display_nickname(question.user), user_path(question.user), method: :get %>
   </span>
