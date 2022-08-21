@@ -8,14 +8,14 @@
     <%= link_to display_nickname(question.user), user_path(question.user), method: :get %>
   </span>
 
-  <% if question.author.present? %>
+  <% author = question.author %>
+  <% if author.present? %>
     <span>
       от
-      <%= link_to display_nickname(question.author), user_path(question.author), method: :get %>
+      <%= link_to display_nickname(author), user_path(author), method: :get %>
     </span>
   <% end %>
 </div>
-
 
 <div class="mb-sm <%= "text-hidden" if question.hidden? %>">
   <%= simple_format h(question.body) %>
