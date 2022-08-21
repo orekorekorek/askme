@@ -23,6 +23,9 @@ class User < ApplicationRecord
     presence: true,
     format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
 
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: "monsterid")
+
   private
 
   def downcase_nickname
