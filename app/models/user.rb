@@ -23,6 +23,10 @@ class User < ApplicationRecord
     presence: true,
     format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
 
+  def to_param
+    nickname
+  end
+
   private
 
   def downcase_nickname
