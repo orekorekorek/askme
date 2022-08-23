@@ -23,6 +23,10 @@ class User < ApplicationRecord
     presence: true,
     format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
 
+  def to_param
+    nickname
+  end
+
   include Gravtastic
   gravtastic(secure: true, filetype: :png, size: 100, default: "monsterid")
 
