@@ -27,6 +27,9 @@ class User < ApplicationRecord
     nickname
   end
 
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: "monsterid")
+
   private
 
   def downcase_nickname

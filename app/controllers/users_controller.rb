@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to root_path, notice: "Данные пользователя обновлены"
+      redirect_to user_path(@user), notice: "Данные пользователя обновлены"
     else
       flash.now[:alert] = "При попытке сохранить данные пользователя возникли ошибки"
 
