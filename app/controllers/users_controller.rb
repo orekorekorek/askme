@@ -9,25 +9,23 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'Вы успешно зарегистрировались!'
     else
-      flash.now[:alert] = "Вы неправильно заполнили поля формы регистрации"
+      flash.now[:alert] = 'Вы неправильно заполнили поля формы регистрации'
 
       render :new
     end
-
   end
 
   def new
     @user = User.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: "Данные пользователя обновлены"
+      redirect_to user_path(@user), notice: 'Данные пользователя обновлены'
     else
-      flash.now[:alert] = "При попытке сохранить данные пользователя возникли ошибки"
+      flash.now[:alert] = 'При попытке сохранить данные пользователя возникли ошибки'
 
       render :edit
     end
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
 
     session.delete(:user_id)
 
-    redirect_to root_path, notice: "Пользователь удалён"
+    redirect_to root_path, notice: 'Пользователь удалён'
   end
 
   def show

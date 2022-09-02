@@ -12,8 +12,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def new
-  end
+  def new; end
 
   def destroy
     session.delete(:user_id)
