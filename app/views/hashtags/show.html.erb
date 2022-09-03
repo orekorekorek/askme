@@ -1,0 +1,13 @@
+<div class="container">
+  Вопросы с хэштегом <%= link_to display_hashtag(@hashtag), hashtag_path(@hashtag) %>
+
+  <p class="mt-sm">
+    <%= link_to "Назад", :back %>
+  </p>
+</div>
+
+<% @questions.each do |question| %>
+  <div class="mt-sm container">
+    <%= render question %>
+  </div>
+<% end %>

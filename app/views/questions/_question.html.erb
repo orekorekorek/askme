@@ -47,3 +47,10 @@
     </div>
   <% end %>
 </div>
+
+<div class="mt-sm">
+  Хэштеги:
+  <% question.hashtags.each do |tag| %>
+  <%= link_to display_hashtag(tag), hashtag_path(tag) %>
+  <% end %>
+</div>
