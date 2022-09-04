@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :questions, dependent: :delete_all
+
   before_validation :downcase_nickname
 
   validates :email,
@@ -16,8 +18,6 @@ class User < ApplicationRecord
 
   validates :name,
             db_presence: true
-
-  has_many :questions, dependent: :delete_all
 
   validates :header_color,
             presence: true,

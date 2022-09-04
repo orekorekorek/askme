@@ -4,7 +4,7 @@ class Hashtag < ApplicationRecord
 
   validates :name, db_presence: true, db_uniqueness: true
 
-  scope :with_questions, -> { joins(:questions) }
+  scope :with_questions, -> { where_exists(:question_hashtags) }
   scope :desc, -> { order(created_at: :desc) }
 
   def to_param

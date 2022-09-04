@@ -1,13 +1,13 @@
 class Question < ApplicationRecord
   HASHTAG_REGEXP = /#[[:word:]-]+/
 
-  after_save_commit :update_hashtags
+  belongs_to :user
+  belongs_to :author, class_name: 'User', optional: true
 
   has_many :question_hashtags, dependent: :destroy
   has_many :hashtags, through: :question_hashtags
 
-  belongs_to :user
-  belongs_to :author, class_name: 'User', optional: true
+  after_save_commit :update_hashtags
 
   validates :body, presence: true, length: { maximum: 1000 }
 

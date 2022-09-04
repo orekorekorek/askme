@@ -45,7 +45,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.last_questions
     @users = User.last_users
-    @hashtags = Hashtag.with_questions.desc.distinct
+    @hashtags = Hashtag.with_questions.desc
   end
 
   def new
