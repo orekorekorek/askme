@@ -5,8 +5,6 @@ class HashtagsController < ApplicationController
     if @hashtag.questions.present?
       @questions = @hashtag.questions
     else
-      flash.now[:alert] = 'Такого хэштега не существует!'
-
       redirect_to_root_with_alert
     end
   end
