@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_root_with_alert
-    redirect_to root_path, alert: 'Отказано в доступе!'
+    redirect_to root_path, alert: 'Такой страницы не существует!'
   end
 end

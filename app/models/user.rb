@@ -23,6 +23,9 @@ class User < ApplicationRecord
             presence: true,
             format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
 
+  scope :desc, -> { order(created_at: :desc) }
+  scope :last_users, -> { desc.first(10) }
+
   def to_param
     nickname
   end
