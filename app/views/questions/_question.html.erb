@@ -18,12 +18,12 @@
 </div>
 
 <div class="mb-sm <%= "text-hidden" if question.hidden? %>">
-  <%= simple_format h(question.body) %>
+  <%= sanitize text_with_hashtag_link(question.body) %>
 </div>
 
 <% if question.answer.present? %>
   <div class="mb-sm text-dark-red">
-    <%= question.answer %>
+    <%= sanitize text_with_hashtag_link(question.answer) %>
   </div>
 <% end %>
 

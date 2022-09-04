@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @questions = @user.questions.order(created_at: :desc)
+    @questions = @user.questions.includes(%i[user author question_hashtags hashtags]).order(created_at: :desc)
     @question = Question.new(user: @user)
   end
 

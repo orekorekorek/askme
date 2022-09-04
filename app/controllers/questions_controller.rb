@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.last_questions
+    @questions = Question.includes(%i[user author question_hashtags hashtags]).last_questions
     @users = User.last_users
     @hashtags = Hashtag.with_questions.desc
   end
