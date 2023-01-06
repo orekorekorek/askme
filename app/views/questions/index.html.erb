@@ -14,10 +14,18 @@
     <%= @questions.count %>
     <%= inclination(@questions.count, %w[вопрос вопроса вопросов]) %>
   </h2>
+  <% if @hashtags.present? %>
+  <h2>
+    Хэштеги:
+    <% @hashtags.each do |tag| %>
+    <%= link_to display_hashtag(tag), hashtag_path(tag) %>
+    <% end %>
+  </h2>
+  <% end %>
 </div>
 
 <% @questions.each do |question| %>
   <div class="mt-sm container">
     <%= render question %>
   </div>
-<% end %>>
+<% end %>

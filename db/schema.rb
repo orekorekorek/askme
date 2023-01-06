@@ -10,29 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_225517) do
-  create_table "questions", force: :cascade do |t|
-    t.text "body"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "hidden", default: false
-    t.text "answer"
-    t.integer "author_id"
-    t.index ["author_id"], name: "index_questions_on_author_id"
-    t.index ["user_id"], name: "index_questions_on_user_id"
+ActiveRecord::Schema[7.0].define(version: 20_220_902_183_751) do
+  create_table 'hashtags', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['name'], name: 'index_hashtags_on_name', unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "nickname"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "header_color", default: "#370617", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["nickname"], name: "index_users_on_nickname", unique: true
+  create_table 'question_hashtags', force: :cascade do |t|
+    t.integer 'question_id', null: false
+    t.integer 'hashtag_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['hashtag_id'], name: 'index_question_hashtags_on_hashtag_id'
+    t.index ['question_id'], name: 'index_question_hashtags_on_question_id'
   end
 
+  create_table 'questions', force: :cascade do |t|
+    t.text 'body'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'hidden', default: false
+    t.text 'answer'
+    t.integer 'author_id'
+    t.index ['author_id'], name: 'index_questions_on_author_id'
+    t.index ['user_id'], name: 'index_questions_on_user_id'
+  end
+
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'nickname'
+    t.string 'email'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'password_digest'
+    t.string 'header_color', default: '#370617', null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['nickname'], name: 'index_users_on_nickname', unique: true
+  end
+
+  add_foreign_key 'question_hashtags', 'hashtags'
+  add_foreign_key 'question_hashtags', 'questions'
 end

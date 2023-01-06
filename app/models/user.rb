@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :questions, dependent: :delete_all
+
   before_validation :downcase_nickname
 
   validates :email,
@@ -17,11 +19,12 @@ class User < ApplicationRecord
   validates :name,
             db_presence: true
 
-  has_many :questions, dependent: :delete_all
-
   validates :header_color,
             presence: true,
             format: { with: /\A#([A-Fa-f\d]{6}|[A-Fa-f\d]{3})\z/ }
+
+  scope :desc, -> { order(created_at: :desc) }
+  scope :last_users, -> { desc.first(10) }
 
   def to_param
     nickname

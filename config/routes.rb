@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root to: "questions#index"
+  root to: 'questions#index'
 
   resources :questions do
-    put "hide", on: :member
+    put 'hide', on: :member
   end
   resources :users, except: %i[index], param: :nickname
   resource :session, only: %i[new create destroy]
+  resources :hashtags, param: :name, only: %i[show]
 end

@@ -39,11 +39,13 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @hashtags = @question.hashtags
   end
 
   def index
-    @questions = Question.order(created_at: :desc).first(10)
-    @users = User.order(created_at: :desc).first(10)
+    @questions = Question.includes(%i[user author question_hashtags hashtags]).last_questions
+    @users = User.last_users
+    @hashtags = Hashtag.with_questions.desc
   end
 
   def new
